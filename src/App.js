@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
+import AppLayout from './AppLayout';
+import WelcomeMessage from './WelcomeMessage';
+import AppBar from './AppBar'
 
 function App() {
   return (
-    <div>
-      Welcome To Crypto Dash
-    </div>
+    <AppLayout>
+      <AppBar />
+      <WelcomeMessage />
+    </AppLayout>
   );
 }
 
