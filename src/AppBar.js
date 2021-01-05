@@ -1,4 +1,5 @@
 import React from 'react'
+import {AppContext} from './AppProvider'
 import styled, {css} from 'styled-components'
 
 const Bar = styled.div`
@@ -24,14 +25,26 @@ function toProperCase(lower){
 
 function ControlButton({name, active}){
     return(
-        <ControlButtonElem active={active}>
-            {toProperCase(name)}
-        </ControlButtonElem>
+        <AppContext.Consumer>
+            {
+                ({page, setPage}) => (
+                    <ControlButtonElem 
+                        active={page === name}
+                        onClick={() => setPage(name)}
+                    >
+                        {toProperCase(name)}
+                    </ControlButtonElem>
+                )
+            }
+            
+        </AppContext.Consumer>
     )
     
 }
 
 export default function AppBar() {
+
+
     return (
         <Bar>
             <Logo>CryptoSearch</Logo>
