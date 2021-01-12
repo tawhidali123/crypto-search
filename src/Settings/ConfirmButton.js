@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import {AppContext} from '../AppProvider'
+import {fontSize1, greenBoxShadow, color3} from '../Shared/Style'
 
 const ConfirmButtonStyled = styled.div`
     margin: 20px;
-    color: green;
-    font-size: 7.5px;
+    color: ${color3}
+    ${fontSize1};
+    padding: 5px;
     cursor: pointer;
+    &:hover{
+        ${greenBoxShadow}
+    }
 `
 
 const CenterDiv = styled.div`
@@ -21,7 +26,7 @@ export default function ConfirmButton() {
                 ({confirmFavorites}) => (
                     <CenterDiv>
                         <ConfirmButtonStyled onClick={confirmFavorites}>
-                            <h1>Confirm Favorites</h1>
+                            <h2 style={{color: `${color3}`}}>Confirm Favorites</h2>
                         </ConfirmButtonStyled>
                     </CenterDiv>
                 )
