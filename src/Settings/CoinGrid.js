@@ -1,10 +1,12 @@
 import React from 'react'
 import {AppContext} from '../AppProvider'
 import styled from 'styled-components'
+import {SelectableTile} from '../Shared/Tile'
 
 const CoinGridStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
 `
 
 export default function CoinGrid() {
@@ -15,7 +17,7 @@ export default function CoinGrid() {
                     <CoinGridStyled>
                         {
                             Object.keys(coinList).map(coinKey => {
-                                return <div> {coinKey} </div>
+                                return <SelectableTile> {coinKey} </SelectableTile>
                             })
                         }
                     </CoinGridStyled>
