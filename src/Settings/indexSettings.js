@@ -8,6 +8,7 @@ export default function indexSettings() {
     return (
         <Page name='settings'>
             <WelcomeMessage />
+            <CoinGrid topSection/>
             <ConfirmButton />
             <CoinGrid />
         </Page>
