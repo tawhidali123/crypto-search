@@ -20,7 +20,8 @@ export class AppProvider extends React.Component {
             removeCoin: this.removeCoin,
             isInFavorites: this.isInFavorites,
             confirmFavorites: this.confirmFavorites,
-            setFilteredCoins: this.setFilteredCoins
+            setFilteredCoins: this.setFilteredCoins,
+            setCurrentFavorite: this.setCurrentFavorite
         }
     }
 
@@ -56,14 +57,17 @@ export class AppProvider extends React.Component {
     }
 
     confirmFavorites = () => {
+        let currentFavorite = this.state.favorites[0]
         this.setState({
             firstVisit: false,
-            page: 'dashboard'
+            page: 'dashboard',
+            currentFavorite
         }, () => {
             this.fetchPrices()
         })
         localStorage.setItem('cryptoSearch', JSON.stringify({
-            favorites: this.state.favorites
+            favorites: this.state.favorites,
+            currentFavorite
         }))
     }
 
@@ -87,13 +91,23 @@ export class AppProvider extends React.Component {
         if(!cryptoSearchData) {
             return {page: 'settings', firstVisit: true}
         }
-        let {favorites} = cryptoSearchData
-        return {favorites}
+        let {favorites, currentFavorite} = cryptoSearchData
+        return {favorites, currentFavorite}
     }
 
     setPage = page => this.setState({page})
 
     setFilteredCoins = filteredCoins => this.setState({filteredCoins})
+
+    setCurrentFavorite = (sym) => {
+        this.setState({
+            currentFavorite: sym
+        })
+        localStorage.setItem('cryptoSearch', JSON.stringify({
+            ...JSON.parse(localStorage.getItem('cryptoSearch')),
+            currentFavorite: sym
+        }))
+    }
 
     render(){
         return(
