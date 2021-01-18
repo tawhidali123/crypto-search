@@ -18,8 +18,8 @@ export default function PriceGrid() {
                 {
                     ({prices}) => (
                         <PriceGridStyled>
-                            {prices.map(price => (
-                                <PriceTile price={price} />
+                            {prices.map((price, index) => (
+                                <PriceTile index={index} price={price} />
                             ))}
                         </PriceGridStyled>
                     )
