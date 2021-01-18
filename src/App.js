@@ -5,6 +5,7 @@ import IndexSettings from './Settings/indexSettings';
 import AppBar from './AppBar'
 import {AppProvider} from './AppProvider'
 import Content from './Shared/Content'
+import IndexDashboard from './Dashboard/indexDashboard'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
         <Content>
           <IndexSettings />
+          <IndexDashboard />
         </Content>
       </AppProvider>
     </AppLayout>
