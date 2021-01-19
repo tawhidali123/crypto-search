@@ -11,9 +11,12 @@ export default function PriceChart() {
     return (
         <AppContext.Consumer>
             {
-                ({}) => (
+                ({historical}) => (
                     <Tile>
-                        <ReactHighCharts config={highChartsConfig()} />
+                        {historical ? 
+                            <ReactHighCharts config={highChartsConfig(historical)} /> : 
+                            <div>Loading History ...</div>
+                        }
                     </Tile>
                 )
             }

@@ -22,6 +22,8 @@ const SearchInput = styled.input`
 
 
 const handleFilter = _.debounce((inputValue, setFilteredCoins, coinList) => {
+    console.log(coinList)
+    debugger
     // Get all the coin symbols
     let coinSymbols = Object.keys(coinList)
 
